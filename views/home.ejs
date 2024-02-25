@@ -1,0 +1,53 @@
+
+<%- include('../partials/head.ejs') %>
+
+  <body>
+    <div class="container">
+      <form action="#">
+        <div class="form-group">
+          <label for="url">Enter URL</label>
+          <input
+            type="text"
+            name="url"
+            class="form-control"
+            placeholder=""
+          />
+          <small class="err"></small>
+          <button class="btn btn-primary mt-2 my-btn">Send</button>
+        </div>
+        <div>
+          <p class="shortUrl"></p>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      const form = document.querySelector("form");
+      const shortUrl = document.querySelector('.shortUrl');
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const url = form.url.value;
+        try {
+          const result = await fetch("/", {
+            method: "POST",
+            body: JSON.stringify( {url} ),
+            headers: { "Content-type": "application/json" },
+          });
+        
+          const data = await result.json();
+
+          if(data.id){
+            shortUrl.textContent = "Your Short ID : "+data.id;
+            alert("Test localhost:3000/YOUR-SHORT-ID");
+          }
+
+        } catch (err) {
+          console.log(err);
+        }
+      });
+    </script>
+  </body>
+
+  <%- include('../partials/foot.ejs') %>  

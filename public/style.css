@@ -1,0 +1,30 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+
+body{
+    background-color: #fcfcfc;
+}
+
+form{
+    height: max-content;
+    width: 80%;
+    margin: 50px auto;
+    /* background-color: aqua; */
+}
+
+.err{
+    color: red;
+    font-weight: 500;
+}
+
+.my-btn{
+    float: right;
+}
+
+.shortUrl{
+    margin-top: 150px;
+    text-align: center;
+    font-size: 36px;
+}
